@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private tts: TextToSpeech) {}
+
+  speak() : void {
+    this.tts.speak({text: 'Hello Prince', rate: 1.3 })
+    .then(() => console.log('Success'))
+    .catch((reason: any) => console.log(reason));
+  }
 
 }
